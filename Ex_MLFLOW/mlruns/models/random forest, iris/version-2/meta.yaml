@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1734734526226
+current_stage: Production
+description: ''
+last_updated_timestamp: 1734734526754
+name: random forest, iris
+run_id: 59374e9336cb46e8b1677e2f0bb68caf
+run_link: ''
+source: mlflow-artifacts:/135740183885560034/59374e9336cb46e8b1677e2f0bb68caf/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/135740183885560034/59374e9336cb46e8b1677e2f0bb68caf/artifacts/model
+user_id: null
+version: 2
