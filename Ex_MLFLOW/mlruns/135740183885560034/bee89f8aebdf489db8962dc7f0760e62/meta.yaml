@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/135740183885560034/bee89f8aebdf489db8962dc7f0760e62/artifacts
+end_time: 1734733660566
+entry_point_name: ''
+experiment_id: '135740183885560034'
+lifecycle_stage: active
+run_id: bee89f8aebdf489db8962dc7f0760e62
+run_name: handsome-ram-281
+run_uuid: bee89f8aebdf489db8962dc7f0760e62
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1734733589545
+status: 3
+tags: []
+user_id: Zahra
