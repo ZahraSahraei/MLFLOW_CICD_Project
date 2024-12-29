@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask ML App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>پیش‌بینی مدل ماشین لرنینگ</h1>
+    <form action="/predict" method="POST">
+        <label for="feature1">ویژگی ۱:</label>
+        <input type="text" name="feature1" id="feature1" required>
+        <label for="feature2">ویژگی ۲:</label>
+        <input type="text" name="feature2" id="feature2" required>
+        <button type="submit">پیش‌بینی</button>
+    </form>
+    {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</body>
+</html>
