@@ -31,7 +31,7 @@ jobs:
 
 
       - name: Train the model (Online Training)
-        run: python model.py
+        run: python Ex_CICD/app/model.py
 
 
       - name: Run Tests
