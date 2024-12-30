@@ -23,7 +23,7 @@ def predict():
 
     # پیش‌بینی
     prediction = model.predict(features_array)[0]
-    return render_template("index.html", prediction_text=f"نتیجه پیش‌بینی: {prediction}")
+    return render_template("index.html", prediction_text=f"قیمت پیش‌بینی شده خانه: ${prediction:,.2f}")
 
 if __name__ == "__main__":
     app.run(debug=True)
