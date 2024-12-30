@@ -37,7 +37,12 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest
 
     # Step 6 (Optional): Deploy to a server or platform
+    - name: Add SSH key
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_KEY }}  # Load the SSH private key from GitHub Secrets
+
     - name: Deploy to Server
       if: success()
       run: |
-        ssh -p ${{ secrets.SERVER_PORT }} -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "docker pull ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest && docker run -d --restart=always -p 8010:5000 ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest"
+        ssh -p ${{ secrets.SERVER_PORT }} -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "docker pull ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest && docker run -d --restart=always -p 8010:5000 ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest"
