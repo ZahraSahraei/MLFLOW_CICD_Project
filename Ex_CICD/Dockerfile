@@ -1,11 +1,11 @@
-FROM python:3.9-slim
+FROM python:3.10
 
 WORKDIR /app
 
-COPY ./Ex_CICD/app .
+COPY ./app .
 
 
-RUN pip install --no-chache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 EXPOSE 8080
 
