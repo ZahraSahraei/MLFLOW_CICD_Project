@@ -3,6 +3,7 @@ name: Build and Deploy Docker Image
 on:
   push:
     branches:
+      - main
       - master  # Trigger the workflow when changes are pushed to the main branch
 
 jobs:
@@ -35,8 +36,8 @@ jobs:
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest
 
-#    # Step 6 (Optional): Deploy to a server or platform
-#    - name: Deploy to Server
-#      if: success()
-#      run: |
-#        ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} user@your-server "docker pull ${{ secrets.DOCKER_USERNAME }}/your-image-name:latest && docker run -d --restart=always -p 8000:8000 ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest"
+    # Step 6 (Optional): Deploy to a server or platform
+    - name: Deploy to Server
+      if: success()
+      run: |
+        ssh -p ${{ secrets.SERVER_PORT }} -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "docker pull ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest && docker run -d --restart=always -p 8010:5000 ${{ secrets.DOCKER_USERNAME }}/house-price-service:latest"
