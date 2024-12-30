@@ -1,0 +1,13 @@
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.0.1
+    container_name: mlflow
+    ports:
+      - "5000:5000"  # Expose MLflow UI on localhost:5000
+    volumes:
+      - ./mlartifacts:/mlartifacts  # Local directory to store artifacts
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --backend-store-uri sqlite:///mlartifacts/mlflow.db
+
