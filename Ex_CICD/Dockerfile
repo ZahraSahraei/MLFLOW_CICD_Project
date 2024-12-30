@@ -2,7 +2,7 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY ./app .
+COPY ./Ex_CICD/app .
 
 
 RUN pip install --no-chache-dir -r requirements.txt
