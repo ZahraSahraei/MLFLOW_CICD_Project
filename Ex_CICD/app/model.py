@@ -1,9 +1,10 @@
 import pandas as pd
 import sklearn
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split 
-import pickle 
+from sklearn.model_selection import train_test_split
+import pickle
 import numpy as np
+
 
 # CRIM - per capita crime rate by town
 # ZN - proportion of residential land zoned for lots over 25,000 sq.ft.
@@ -25,19 +26,22 @@ def train_and_save_model():
     # print ('pandas.__version__ ' , pd.__version__)
     # print ('numpy.__version__ ' , np.__version__)
 
-    data = pd.read_csv("https://raw.githubusercontent.com/selva86/datasets/master/BostonHousing.csv")
+    data = pd.read_csv(
+        "https://raw.githubusercontent.com/selva86/datasets/master/BostonHousing.csv")
     X = data.drop(columns=["medv"])
-    y = data['medv'] # target 
+    y = data['medv']  # target
 
-    X_Train, X_Test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_Train, X_Test, y_train, y_test = train_test_split(X, y, test_size=0.2,
+                                                        random_state=42)
 
     model = LinearRegression()
     model.fit(X_Train, y_train)
 
-    with open("model.pkl" , 'wb') as file:
+    with open("model.pkl", 'wb') as file:
         pickle.dump(model, file)
 
     print(' Pickle file saved. ')
+
 
 if __name__ == "__main__":
     train_and_save_model()
